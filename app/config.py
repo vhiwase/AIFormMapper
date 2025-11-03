@@ -1,0 +1,16 @@
+import os
+import dotenv
+
+dotenv.load_dotenv()
+
+class DevelopmentConfig:
+    DOCUMENT_INTELLIGENCE_KEY = os.getenv("DOCUMENT_INTELLIGENCE_KEY")
+    DOCUMENT_INTELLIGENCE_ENDPOINT = os.getenv("DOCUMENT_INTELLIGENCE_ENDPOINT")
+    DOCUMENT_INTELLIGENCE_REGION = os.getenv("DOCUMENT_INTELLIGENCE_REGION")
+    DOCUMENT_INTELLIGENCE_MODEL = "prebuilt-read"
+
+    GPT_4_1_API_VERSION = os.getenv("GPT_4_1_API_VERSION")
+    GPT_4_1_AZURE_ENDPOINT = os.getenv("GPT_4_1_AZURE_ENDPOINT")
+    GPT_4_1_API_KEY = os.getenv("GPT_4_1_API_KEY")
+    GPT_4_1_DEPLOYMENT_NAME = os.getenv("GPT_4_1_DEPLOYMENT_NAME")
+

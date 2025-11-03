@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  fastapi_app:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./.env
+    volumes:
+      - .:/app
+      - temp_data:/app/temp_data
+    networks:
+      - app_network
+
+  streamlit_app:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    ports:
+      - "8501:8501"
+    env_file:
+      - ./.env
+    volumes:
+      - .:/app
+      - temp_data:/app/temp_data
+    depends_on:
+      - fastapi_app
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  temp_data:
